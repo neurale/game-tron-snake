@@ -1,0 +1,1078 @@
+<script>
+var leftBorder=10
+var rightBorder=1000
+var upBorder=10
+var downBorder=1000
+var vx = 10
+var vy = 0
+var t = 10
+var x = 220
+var y = 500
+var d=[]
+var n = 0
+var c =[]
+var hx=[]
+var hy=[]
+hx[0]=220
+hy[0]=500
+document.body.innerHTML += ('<div id="cu" style="position: absolute; width: 10px; height: 10px; background-color: #0066ff; left:'+x+'px; top:'+y+'px;"></div>')
+
+var vx2 = -10
+var vy2 = 0
+var t2 = 10
+var x2 = 780
+var y2 = 500
+var d2=[]
+var n2 = 0
+var c2 =[]
+var hx2=[]
+var hy2=[]
+hx2[0]=780
+hy2[0]=500
+var axis="x"
+document.body.innerHTML += ('<div id="cu2" style="position: absolute; width: 10px; height: 10px; background-color: #ff66d9; left:'+x2+'px; top:'+y2+'px;"></div>')
+
+var axis1="x"
+
+var u1=[]
+var u =[]
+function moveRight(){
+  vx=10
+  vy=0
+  saveCorner()
+  connectDotsy()
+  console.log("moveRight2()")
+    axis1="x"
+  console.log(axis)
+
+  u1[n]=[1,0]
+          $("div").remove(".bodydiv");
+
+}
+
+function moveLeft(){
+  vx=-10
+  vy=0
+  saveCorner()
+  connectDotsy()
+  console.log("moveLeft()")
+  axis1="x"
+  console.log(axis)
+  u1[n]=[-1,0]
+          $("div").remove(".bodydiv");
+
+}
+
+function moveDown(){
+  vy=10
+  vx=0
+  saveCorner()
+  connectDotsx()
+  
+  console.log("moveDown2()")
+  axis1="y"
+    console.log(axis)
+
+  u1[n]=[0,1]
+          $("div").remove(".bodydiv");
+
+}
+
+function moveUp(){
+  vy=-10
+  vx=0
+  saveCorner()
+  connectDotsx()
+  
+  console.log("moveUp2()")
+  axis1="y"
+  console.log(axis)
+  u1[n]=[0,-1]
+          $("div").remove(".bodydiv");
+
+}
+
+function moveRight2(){
+  vx2=10
+  vy2=0
+  saveCorner2()
+  connectDotsy2()
+  console.log("moveRight2()")
+    axis="x"
+  console.log(axis)
+
+  u[n2]=[1,0]
+          $("div").remove(".bodydiv2");
+
+}
+
+function moveLeft2(){
+  vx2=-10
+  vy2=0
+  saveCorner2()
+  connectDotsy2()
+  console.log("moveLeft2()")
+  axis="x"
+  console.log(axis)
+  u[n2]=[-1,0]
+          $("div").remove(".bodydiv2");
+
+}
+
+function moveDown2(){
+  vy2=10
+  vx2=0
+  saveCorner2()
+  connectDotsx2()
+  
+  console.log("moveDown2()")
+  axis="y"
+    console.log(axis)
+
+  u[n2]=[0,1]
+          $("div").remove(".bodydiv2");
+
+}
+
+function moveUp2(){
+  vy2=-10
+  vx2=0
+  saveCorner2()
+  connectDotsx2()
+  
+  console.log("moveUp2()")
+  axis="y"
+  console.log(axis)
+  u[n2]=[0,-1]
+          $("div").remove(".bodydiv2");
+
+}
+
+function saveCorner2(){
+  n2++
+  hx2[n2]=x2
+  hy2[n2]=y2
+  console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
+  //document.body.innerHTML += ('<div id="part'+n2+'" style="position: absolute; width: 10px; height: 10px; background-color: red; left:'+x2+'px; top:'+y2+'px;"></div>')
+}
+
+function saveCorner(){
+  n++
+  hx[n]=x
+  hy[n]=y
+ // document.body.innerHTML += ('<div id="part'+n+'" style="position: absolute; width: 10px; height: 10px; background-color: #0066ff; left:'+x+'px; top:'+y+'px;"></div>')
+}
+
+function connectDotsx(){
+   var lenghtx = Math.abs(hx[n]-hx[n-1])
+   if(hx[n]<=hx[n-1]){
+   var left= hx[n-1] - lenghtx
+   lenghtx=lenghtx + 10
+   }
+   else{
+   var left= hx[n-1]
+      lenghtx=lenghtx + 10
+
+   }   
+   document.body.innerHTML += ('<div id="line" style="position: absolute; width: '+lenghtx+'px; height: 10px; background-color: #0066ff; left:'+left+'px; top:'+hy[n]+'px;"></div>')
+}
+
+function connectDotsy(){
+   var lenghty = Math.abs(hy[n]-hy[n-1])
+   if(hy[n]<=hy[n-1]){
+   var top= hy[n-1] - lenghty
+      lenghty=lenghty + 10
+
+   }
+   else{
+   var top=  hy[n-1]
+         lenghty=lenghty + 10
+
+   }
+   document.body.innerHTML += ('<div id="line" style="position: absolute; width: 10px; height: '+lenghty+'px; background-color: #0066ff; left:'+hx[n]+'px; top:'+top+'px;"></div>')   
+}
+
+function connectDotsx2(){
+   var lenghtx = Math.abs(hx2[n2]-hx2[n2-1])
+   if(hx2[n2]<=hx2[n2-1]){
+   var left= hx2[n2-1] - lenghtx
+         lenghtx=lenghtx + 10
+
+   }
+   else{
+   var left= hx2[n2-1] 
+         lenghtx=lenghtx + 10
+
+   }   
+   document.body.innerHTML += ('<div id="line2" style="position: absolute; width: '+lenghtx+'px; height: 10px; background-color: #ff66d9; left:'+left+'px; top:'+hy2[n2]+'px;"></div>')
+}
+
+function connectDotsy2(){
+   var lenghty = Math.abs(hy2[n2]-hy2[n2-1])
+   if(hy2[n2]<=hy2[n2-1]){
+   var top= hy2[n2-1] - lenghty
+         lenghty=lenghty + 10
+
+   }
+   else{
+   var top=  hy2[n2-1]
+         lenghty=lenghty + 10
+
+   }
+   document.body.innerHTML += ('<div id="line2" style="position: absolute; width: 10px; height: '+lenghty+'px; background-color: #ff66d9; left:'+hx2[n2]+'px; top:'+top+'px;"></div>')   
+}
+
+
+
+
+var f=0
+
+function usualTurn(){
+  var boost = 20+Math.round(Math.random()*20)
+  var boostTime = Math.round(Math.random()*15)
+  var random = Math.random()*2
+  var probability = 0.1+Math.random()*0.05
+  var probabilityBoost = 0.1+Math.random()
+  var chance = probability
+  if(f>boost){
+    chance= probabilityBoost
+  }
+  if(f>(boost+boostTime)){
+    f=0
+    chance=probability
+  }
+  if(random<chance){
+      console.log("usual turn")
+
+    whereToTurnNicely()
+  }
+  turny[0]=0
+  turny[1]=0
+  turnx[0]=0
+  turnx[1]=0
+  
+     
+}
+
+
+function whereToTurnNicely(){
+ 
+  var checkTurn = 0
+  checkTurn=0
+  hy[n+1]=y + vy
+  hx[n+1]=x + vx
+  
+  if(axis ==="x"){  //vira para cima ou baixo porque esta no eixo x
+          console.log("if axis x nice")
+
+    for (var e = 0; e <= 1; e++) {  
+      var protoy2=y2 + 10+(-20*e) //quando e=0,v=10 (), quando e=1,v=-10
+      if(upBorder>protoy2 || downBorder<protoy2){
+        turnx[e]=1
+        checkTurn=1
+      }
+    
+      for (var i = 0; i <= n; i++) {
+        if((hx[i] - x2)*(hx[i+1] - x2)<=0){
+          if((hy[i] - protoy2)*(hy[i+1] - protoy2)<=0){
+            turnx[e]=1
+            checkTurn=1
+          }
+        }
+      }
+      for (var i = 0; i < n2; i++) {
+        if((hx2[i] - x2)*(hx2[i+1] - x2)<=0){
+          if((hy2[i] - protoy2)*(hy2[i+1] - protoy2)<=0){
+            turnx[e]=1
+            checkTurn=1
+          }
+        }
+      } 
+    }
+    if(turnx[0]===1 && turnx[1]===1){
+      console.log("do nothing)")
+    }
+    else if(turnx[0]===1){
+    console.log("move Up (turnnicely)")
+      moveUp2()
+      
+    }
+    else if(turnx[1]===1){
+    console.log("move Down (turnnicely)")
+      moveDown2()
+      
+    }
+  
+    
+  }
+  
+  else if(axis ==="y"){ //vira para esquerda ou direita porque esta no eixo y
+      console.log("if axis y nice" )
+
+    for (var e = 0; e <= 1; e++) {  
+      var protox2=x2 + 10+(-20*e) //quando e=0,v=10 (), quando e=1,v=-10
+      if(leftBorder>protox2 || rightBorder<protox2){
+        turny[e]=1
+        checkTurn=1
+      }
+    
+      for (var i = 0; i <= n; i++) {
+        if((hx[i] - protox2)*(hx[i+1] - protox2)<=0){
+          if((hy[i] - y2)*(hy[i+1] - y2)<=0){
+            turny[e]=1
+            checkTurn=1
+          }
+        }
+      }
+      for (var i = 0; i < n2; i++) {
+        if((hx2[i] - protox2)*(hx2[i+1] - protox2)<=0){
+          if((hy2[i] - y2)*(hy2[i+1] - y2)<=0){
+            turny[e]=1
+            checkTurn=1
+          }
+        }
+      }
+    }
+    if(turny[0]===1 && turny[1]===1){
+      console.log("do nothing")
+    }
+    else if(turny[0]===1){
+    console.log("move left nice")
+      moveLeft2()
+      
+    }
+    else if(turny[1]===1){
+    console.log("move right nice")
+      moveRight2()
+      
+    }
+
+  }
+  hy[n+1]= hy[n+1] - vy
+  hx[n+1]= hx[n+1] - vx
+  if(checkTurn===0){
+  console.log("turn random nice")
+    turnRandom()
+    
+  }
+  checkTurn=0
+}
+
+
+function AIaboutToDie(){
+  var protoy2=y2 + vy2
+  var protox2=x2 + vx2
+  var danger=false
+  start=false
+
+  hy[n+1]=y + vy
+  hx[n+1]=x + vx
+
+  if(leftBorder>protox2 || rightBorder<protox2 || upBorder>protoy2 || downBorder<protoy2){
+    danger=true
+    console.log("about to die because of borders")
+    whereToTurn()
+    start=true  
+  }
+  
+  for (var i = 0; i <= n; i++) {
+    if((hx[i] - protox2)*(hx[i+1] - protox2)<=0){
+      if((hy[i] - protoy2)*(hy[i+1] - protoy2)<=0){
+        danger=true
+        console.log("about to die because of blue")
+        whereToTurn()
+        start=true
+        
+      }
+    }
+  }
+  for (var i = 0; i < n2; i++) {
+    if((hx2[i] - protox2)*(hx2[i+1] - protox2)<=0){
+      if((hy2[i] - protoy2)*(hy2[i+1] - protoy2)<=0){
+        danger=true
+        console.log("about to die because of tail")
+        whereToTurn() 
+        start=true
+      }
+    }
+  }  
+  if(danger===false){
+    f++
+    usualTurn()
+  }
+
+}
+var turnx=[]
+var turny=[]
+turny[0]=0
+turny[1]=0
+turnx[0]=0
+turnx[1]=0
+
+function turnRandom(){
+  var random = Math.floor(Math.random()*2)
+  var success = false
+  if(axis === "x"){
+    console.log("turnrandom x")
+      if(n2>=3){
+          console.log("n2>=3")
+
+      if(u[n2][0]+u[n2-1][0]+u[n2-2][0]===0){
+        if(u[n2-1][1]>0){
+        moveDown2()
+        console.log("######################################not square")
+        success=true
+      }
+      else if(u[n2-1][1]<0){
+        moveUp2()
+        console.log("##############################not square")
+        success=true
+      }    
+    }
+  }
+    if(success===false){
+      if(random===1){
+      console.log("moveUprandom")
+        moveUp2()
+        
+      }
+      else {
+      console.log("movedoenRandom")
+        moveDown2()
+        
+     }
+    }
+  }
+  else if(axis === "y"){
+    console.log("turnrandom y")
+    if(n2>=3){
+    console.log("n2>=3")
+      if(u[n2][1]+u[n2-1][1]+u[n2-2][1]===0){
+      
+        if(u[n2-1][0]>0){          
+        success=true
+
+          console.log("#######################not square")
+          moveRight2()
+        
+        }
+        else if(u[n2-1][0]<0){
+                success=true
+
+         console.log("###############################333notsquare")
+          moveLeft2()     
+       }
+     }
+   }
+   if(success===false){
+     if(random===1){
+     console.log("moveRightRandom")
+         moveRight2()
+         
+       }
+       else {
+       console.log("moveLeftRandom")
+      moveLeft2()
+      
+      }
+    } 
+  }
+success=false
+}
+
+
+  var start=false
+function whereToTurn(){
+  if(start===false){
+  var checkTurn = 0
+  checkTurn=0
+  hy[n+1]=y + vy
+  hx[n+1]=x + vx
+  
+  if(axis ==="x"){  //vira para cima ou baixo porque esta no eixo x
+          console.log("must if axis x")
+
+    for (var e = 0; e <= 1; e++) {  
+      var protoy2=y2 + 10+(-20*e) //quando e=0,v=10 (), quando e=1,v=-10
+      if(upBorder>protoy2 || downBorder<protoy2){
+        turnx[e]=1
+        checkTurn=1
+      }
+    
+      for (var i = 0; i <= n; i++) {
+        if((hx[i] - x2)*(hx[i+1] - x2)<=0){
+          if((hy[i] - protoy2)*(hy[i+1] - protoy2)<=0){
+            turnx[e]=1
+            checkTurn=1
+          }
+        }
+      }
+      for (var i = 0; i < n2; i++) {
+        if((hx2[i] - x2)*(hx2[i+1] - x2)<=0){
+          if((hy2[i] - protoy2)*(hy2[i+1] - protoy2)<=0){
+            turnx[e]=1
+            checkTurn=1
+          }
+        }
+      } 
+    }
+    
+    if(turnx[1]===1 && turnx[0]===1){
+    console.log("do nothing")
+    
+      
+    }
+    else if(turnx[1]===1){
+    console.log("must move down")
+      moveDown2()
+      
+    }
+    else if(turnx[0]===1){
+    console.log("must move up")
+      moveUp2()
+      
+    }
+  
+  }
+  
+  else if(axis ==="y"){ //vira para esquerda ou direita porque esta no eixo y
+      console.log("must if axis y")
+
+    for (var e = 0; e <= 1; e++) {  
+      var protox2=x2 + 10+(-20*e) //quando e=0,v=10 (), quando e=1,v=-10
+      if(leftBorder>protox2 || rightBorder<protox2){
+        turny[e]=1
+        checkTurn=1
+      }
+    
+      for (var i = 0; i <= n; i++) {
+        if((hx[i] - protox2)*(hx[i+1] - protox2)<=0){
+          if((hy[i] - y2)*(hy[i+1] - y2)<=0){
+            turny[e]=1
+            checkTurn=1
+          }
+        }
+      }
+      for (var i = 0; i < n2; i++) {
+        if((hx2[i] - protox2)*(hx2[i+1] - protox2)<=0){
+          if((hy2[i] - y2)*(hy2[i+1] - y2)<=0){
+            turny[e]=1
+            checkTurn=1
+          }
+        }
+      }
+    }
+    if(turny[0]===1 && turny[1]===1){
+    console.log("do nothijng")
+    }
+    else if(turny[0]===1){
+    console.log("must move left")
+      moveLeft2()
+      
+    }
+    else if(turny[1]===1){
+    console.log("must move right")
+      moveRight2()
+      
+    }
+    
+  }
+  if(checkTurn===0){
+    console.log("must turn to one side random")
+    turnRandom()
+  }
+  console.log("end where to turn")
+  turny[0]=0
+  turny[1]=0
+  turnx[0]=0
+  turnx[1]=0
+  checkTurn=0
+  hy[n+1]= hy[n+1] - vy
+  hx[n+1]= hx[n+1] - vx
+ 
+  }
+}
+
+
+
+
+
+
+
+
+
+//##################################################################################
+var turny1=[]
+var turnx1=[]
+function usualTurn1(){
+  var boost = 20+Math.round(Math.random()*20)
+  var boostTime = Math.round(Math.random()*10)
+  var random = Math.random()*2
+  var probability = 0.1+Math.random()*0.05
+  var probabilityBoost = 0.1+Math.random()
+  var chance = probability
+  if(f>boost){
+    chance= probabilityBoost
+  }
+  if(f>(boost+boostTime)){
+    f=0
+    chance=probability
+  }
+  if(random<chance){
+      console.log("usual turn")
+
+    whereToTurnNicely1()
+  }
+  turny1[0]=0
+  turny1[1]=0
+  turnx1[0]=0
+  turnx1[1]=0
+  
+     
+}
+
+
+function whereToTurnNicely1(){
+ 
+  var checkTurn = 0
+  checkTurn=0
+  hy2[n2+1]=y2 + vy2
+  hx2[n2+1]=x2 + vx2
+  
+  if(axis1 ==="x"){  //vira para cima ou baixo porque esta no eixo x
+          console.log("if axis x nice")
+
+    for (var e = 0; e <= 1; e++) {  
+      var protoy2=y + 10+(-20*e) //quando e=0,v=10 (), quando e=1,v=-10
+      if(upBorder>protoy2 || downBorder<protoy2){
+        turnx1[e]=1
+        checkTurn=1
+      }
+    
+      for (var i = 0; i <= n2; i++) {
+        if((hx2[i] - x)*(hx2[i+1] - x)<=0){
+          if((hy2[i] - protoy2)*(hy2[i+1] - protoy2)<=0){
+            turnx1[e]=1
+            checkTurn=1
+          }
+        }
+      }
+      for (var i = 0; i < n; i++) {
+        if((hx[i] - x)*(hx[i+1] - x)<=0){
+          if((hy[i] - protoy2)*(hy[i+1] - protoy2)<=0){
+            turnx[e]=1
+            checkTurn=1
+          }
+        }
+      } 
+    }
+    if(turnx1[0]===1 && turnx1[1]===1){
+      console.log("do nothing)")
+    }
+    else if(turnx1[0]===1){
+    console.log("move Up (turnnicely)")
+      moveUp()
+      
+    }
+    else if(turnx1[1]===1){
+    console.log("move Down (turnnicely)")
+      moveDown()
+      
+    }
+  
+    
+  }
+  
+  else if(axis1 ==="y"){ //vira para esquerda ou direita porque esta no eixo y
+      console.log("if axis y nice" )
+
+    for (var e = 0; e <= 1; e++) {  
+      var protox2=x + 10+(-20*e) //quando e=0,v=10 (), quando e=1,v=-10
+      if(leftBorder>protox2 || rightBorder<protox2){
+        turny1[e]=1
+        checkTurn=1
+      }
+    
+      for (var i = 0; i <= n2; i++) {
+        if((hx2[i] - protox2)*(hx2[i+1] - protox2)<=0){
+          if((hy2[i] - y)*(hy[i+1] - y)<=0){
+            turny1[e]=1
+            checkTurn=1
+          }
+        }
+      }
+      for (var i = 0; i < n; i++) {
+        if((hx[i] - protox2)*(hx[i+1] - protox2)<=0){
+          if((hy[i] - y2)*(hy[i+1] - y)<=0){
+            turny1[e]=1
+            checkTurn=1
+          }
+        }
+      }
+    }
+    if(turny1[0]===1 && turny1[1]===1){
+      console.log("do nothing")
+    }
+    else if(turny1[0]===1){
+    console.log("move left nice")
+      moveLeft()
+      
+    }
+    else if(turny1[1]===1){
+    console.log("move right nice")
+      moveRight()
+      
+    }
+
+  }
+  hy2[n2+1]= hy2[n2+1] - vy2
+  hx2[n2+1]= hx2[n2+1] - vx2
+  if(checkTurn===0){
+  console.log("turn random nice")
+    turnRandom1()
+    
+  }
+  checkTurn=0
+}
+
+
+function AIaboutToDie1(){
+  var protoy2=y + vy
+  var protox2=x + vx
+  var danger=false
+  start=false
+
+  hy2[n2+1]=y2 + vy2
+  hx2[n2+1]=x2 + vx2
+
+  if(leftBorder>protox2 || rightBorder<protox2 || upBorder>protoy2 || downBorder<protoy2){
+    danger=true
+    console.log("about to die because of borders")
+    whereToTurn1()
+    start=true  
+  }
+  
+  for (var i = 0; i <= n2; i++) {
+    if((hx2[i] - protox2)*(hx2[i+1] - protox2)<=0){
+      if((hy2[i] - protoy2)*(hy2[i+1] - protoy2)<=0){
+        danger=true
+        console.log("about to die because of blue")
+        whereToTurn1()
+        start=true
+        
+      }
+    }
+  }
+  for (var i = 0; i < n; i++) {
+    if((hx[i] - protox2)*(hx[i+1] - protox2)<=0){
+      if((hy[i] - protoy2)*(hy[i+1] - protoy2)<=0){
+        danger=true
+        console.log("about to die because of tail")
+        whereToTurn1() 
+        start=true
+      }
+    }
+  }  
+  if(danger===false){
+    f++
+    usualTurn1()
+  }
+
+}
+
+turny1[0]=0
+turny1[1]=0
+turnx1[0]=0
+turnx1[1]=0
+
+function turnRandom1(){
+  var random = Math.floor(Math.random()*2)
+  var success = false
+  if(axis1 === "x"){
+    console.log("turnrandom x")
+      if(n>=3){
+          console.log("n2>=3")
+
+      if(u1[n][0]+u1[n-1][0]+u1[n-2][0]===0){
+        if(u1[n-1][1]>0){
+        moveDown()
+        console.log("######################################not square")
+        success=true
+      }
+      else if(u1[n-1][1]<0){
+        moveUp()
+        console.log("##############################not square")
+        success=true
+      }    
+    }
+  }
+    if(success===false){
+      if(random===1){
+      console.log("moveUprandom")
+        moveUp()
+        
+      }
+      else {
+      console.log("movedoenRandom")
+        moveDown()
+        
+     }
+    }
+  }
+  else if(axis1 === "y"){
+    console.log("turnrandom y")
+    if(n>=3){
+    console.log("n2>=3")
+      if(u1[n][1]+u1[n-1][1]+u1[n-2][1]===0){
+      
+        if(u1[n-1][0]>0){          
+        success=true
+
+          console.log("#######################not square")
+          moveRight()
+        
+        }
+        else if(u1[n-1][0]<0){
+                success=true
+
+         console.log("###############################333notsquare")
+          moveLeft()     
+       }
+     }
+   }
+   if(success===false){
+     if(random===1){
+     console.log("moveRightRandom")
+         moveRight()
+         
+       }
+       else {
+       console.log("moveLeftRandom")
+      moveLeft()
+      
+      }
+    } 
+  }
+success=false
+}
+
+
+  var start=false
+function whereToTurn1(){
+  if(start===false){
+  var checkTurn = 0
+  checkTurn=0
+  hy2[n2+1]=y2 + vy2
+  hx2[n2+1]=x2 + vx2
+  
+  if(axis1 ==="x"){  //vira para cima ou baixo porque esta no eixo x
+          console.log("must if axis x")
+
+    for (var e = 0; e <= 1; e++) {  
+      var protoy2=y + 10+(-20*e) //quando e=0,v=10 (), quando e=1,v=-10
+      if(upBorder>protoy2 || downBorder<protoy2){
+        turnx1[e]=1
+        checkTurn=1
+      }
+    
+      for (var i = 0; i <= n2; i++) {
+        if((hx2[i] - x)*(hx2[i+1] - x)<=0){
+          if((hy2[i] - protoy2)*(hy2[i+1] - protoy2)<=0){
+            turnx1[e]=1
+            checkTurn=1
+          }
+        }
+      }
+      for (var i = 0; i < n; i++) {
+        if((hx[i] - x)*(hx[i+1] - x)<=0){
+          if((hy[i] - protoy2)*(hy[i+1] - protoy2)<=0){
+            turnx1[e]=1
+            checkTurn=1
+          }
+        }
+      } 
+    }
+    
+    if(turnx1[1]===1 && turnx1[0]===1){
+    console.log("do nothing")
+    
+      
+    }
+    else if(turnx1[1]===1){
+    console.log("must move down")
+      moveDown()
+      
+    }
+    else if(turnx1[0]===1){
+    console.log("must move up")
+      moveUp()
+      
+    }
+  
+  }
+  
+  else if(axis1 ==="y"){ //vira para esquerda ou direita porque esta no eixo y
+      console.log("must if axis y")
+
+    for (var e = 0; e <= 1; e++) {  
+      var protox2=x + 10+(-20*e) //quando e=0,v=10 (), quando e=1,v=-10
+      if(leftBorder>protox2 || rightBorder<protox2){
+        turny1[e]=1
+        checkTurn=1
+      }
+    
+      for (var i = 0; i <= n2; i++) {
+        if((hx2[i] - protox2)*(hx2[i+1] - protox2)<=0){
+          if((hy2[i] - y)*(hy2[i+1] - y)<=0){
+            turny1[e]=1
+            checkTurn=1
+          }
+        }
+      }
+      for (var i = 0; i < n; i++) {
+        if((hx[i] - protox2)*(hx[i+1] - protox2)<=0){
+          if((hy[i] - y)*(hy[i+1] - y)<=0){
+            turny1[e]=1
+            checkTurn=1
+          }
+        }
+      }
+    }
+    if(turny1[0]===1 && turny1[1]===1){
+    console.log("do nothijng")
+    }
+    else if(turny1[0]===1){
+    console.log("must move left")
+      moveLeft()
+      
+    }
+    else if(turny1[1]===1){
+    console.log("must move right")
+      moveRight()
+      
+    }
+    
+  }
+  if(checkTurn===0){
+    console.log("must turn to one side random")
+    turnRandom1()
+  }
+  console.log("end where to turn")
+  turny1[0]=0
+  turny1[1]=0
+  turnx1[0]=0
+  turnx1[1]=0
+  checkTurn=0
+  hy2[n2+1]= hy[n2+1] - vy2
+  hx2[n2+1]= hx[n2+1] - vx2
+ 
+  }
+}
+
+
+function dead(){
+  hy2[n2+1]=y2
+  hx2[n2+1]=x2
+  
+  if(leftBorder>x || rightBorder<x || upBorder>y || downBorder<y){
+
+      document.body.innerHTML += ('<div class="explosion" style="position: absolute; width: 10px; height: 10px; background-color: red; left:'+x+'px; top:'+y+'px;"></div>')
+            tri=1
+  }
+  
+  for (var i = 0; i <= n2; i++) {
+    if((hx2[i] - x)*(hx2[i+1] - x)<=0){
+      if((hy2[i] - y)*(hy2[i+1] - y)<=0){
+ document.body.innerHTML += ('<div class="explosion" style="position: absolute; width: 10px; height: 10px; background-color: red; left:'+x+'px; top:'+y+'px;"></div>')
+            tri=1
+      }
+    }
+  }
+  for (var i = 0; i < n; i++) {
+    if((hx[i] - x)*(hx[i+1] - x)<=0){
+      if((hy[i] - y)*(hy[i+1] - y)<=0){
+ 
+            document.body.innerHTML += ('<div class="explosion" style="position: absolute; width: 10px; height: 10px; background-color: red; left:'+x+'px; top:'+y+'px;"></div>')
+            tri=1
+      }
+    }
+  }
+}
+var tri=0
+function dead2(){
+  hy[n+1]=y
+  hx[n+1]=x
+  
+  if(leftBorder>x2 || rightBorder<x2 || upBorder>y2 || downBorder<y2){
+      console.log("dead")
+      tri=1
+
+document.body.innerHTML += ('<div class="explosion" style="position: absolute; width: 10px; height: 10px; background-color: red; left:'+x2+'px; top:'+y2+'px;"></div>')
+  }
+  
+  for (var i = 0; i <= n; i++) {
+    if((hx[i] - x2)*(hx[i+1] - x2)<=0){
+      if((hy[i] - y2)*(hy[i+1] - y2)<=0){
+              console.log("dead")
+                    vy=0
+    
+            tri=1
+
+document.body.innerHTML += ('<div class="explosion" style="position: absolute; width: 10px; height: 10px; background-color: red; left:'+x2+'px; top:'+y2+'px;"></div>')
+      }
+    }
+  }
+  for (var i = 0; i < n2; i++) {
+    if((hx2[i] - x2)*(hx2[i+1] - x2)<=0){
+      if((hy2[i] - y2)*(hy2[i+1] - y2)<=0){
+              console.log("dead")
+                    vy=0
+   
+            tri=1
+
+        document.body.innerHTML += ('<div class="explosion" style="position: absolute; width: 10px; height: 10px; background-color: red; left:'+x2+'px; top:'+y2+'px;"></div>')  
+
+
+      }
+    }
+  }
+}
+
+
+
+$(document).mousedown(function(event) {
+       console.log("pressed")
+  clearInterval(intervalo)
+});
+
+
+
+var intervalo = setInterval(function(){
+if(tri===1){
+  clearInterval(intervalo);
+
+}
+  if(tri===0){  
+AIaboutToDie()
+AIaboutToDie1()
+
+
+  x = x + vx
+  y = y + vy
+  
+  x2 = x2 + vx2
+  y2 = y2 + vy2
+  
+  document.body.innerHTML += ('<div class="bodydiv" style="position: absolute; width: 10px; height: 10px; background-color: #0066ff; left:'+x+'px; top:'+y+'px;"></div>')  
+  document.body.innerHTML += ('<div class="bodydiv2" style="position: absolute; width: 10px; height: 10px; background-color: #ff66d9; left:'+x2+'px; top:'+y2+'px;"></div>')
+
+  
+  dead()
+  dead2()}
+}, 50)
+
+
+
+</script>
+
+

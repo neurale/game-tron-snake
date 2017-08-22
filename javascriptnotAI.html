@@ -1,0 +1,364 @@
+<script>
+//nao morrem na cabeça
+var pointsBlue=0
+var pointsPink=0
+
+  $( "#score" ).html('Blue='+pointsBlue+'   Pink='+pointsPink+'')
+
+
+var vx = 10
+var vy = 0
+var t = 10
+var x = 220
+var y = 500
+var d=[]
+var n = 0
+var c =[]
+var hx=[]
+var hy=[]
+hx[0]=220
+hy[0]=500
+document.body.innerHTML += ('<div id="part0" style="position: absolute; width: 10px; height: 10px; background-color: #0066ff; left:'+x+'px; top:'+y+'px;"></div>')
+
+var vx2 = -10
+var vy2 = 0
+var t2 = 10
+var x2 = 780
+var y2 = 500
+var d2=[]
+var n2 = 0
+var c2 =[]
+var hx2=[]
+var hy2=[]
+hx2[0]=780
+hy2[0]=500
+
+var tri=0
+
+document.body.innerHTML += ('<div id="part0" style="position: absolute; width: 10px; height: 10px; background-color: #ff66d9; left:'+x2+'px; top:'+y2+'px;"></div>')
+
+
+function moveRight(){
+  vx=10
+  vy=0
+  saveCorner()
+   connectDotsy() 
+}
+
+function moveLeft(){
+  vx=-10
+  vy=0
+  saveCorner()
+  connectDotsy() 
+}
+
+function moveDown(){
+  vy=10
+  vx=0
+  saveCorner()
+  connectDotsx() 
+}
+
+function moveUp(){
+  vy=-10
+  vx=0
+  saveCorner()
+  connectDotsx() 
+}
+
+function moveRight2(){
+  vx2=10
+  vy2=0
+  saveCorner2()
+  connectDotsy2() 
+}
+
+function moveLeft2(){
+  vx2=-10
+  vy2=0
+  saveCorner2()
+  connectDotsy2() 
+}
+
+function moveDown2(){
+  vy2=10
+  vx2=0
+  saveCorner2()
+  connectDotsx2() 
+}
+
+function moveUp2(){
+  vy2=-10
+  vx2=0
+  saveCorner2()
+  connectDotsx2() 
+}
+
+function saveCorner2(){
+  n2++
+  hx2[n2]=x2
+  hy2[n2]=y2
+//  document.body.innerHTML += ('<div id="part'+n2+'" style="position: absolute; width: 10px; height: 10px; background-color: #ff66d9; left:'+x2+'px; top:'+y2+'px;"></div>')
+}
+
+function saveCorner(){
+  n++
+  hx[n]=x
+  hy[n]=y
+ // document.body.innerHTML += ('<div id="part'+n+'" style="position: absolute; width: 10px; height: 10px; background-color: #0066ff; left:'+x+'px; top:'+y+'px;"></div>')
+}
+
+function connectDotsx(){
+   var lenghtx = Math.abs(hx[n]-hx[n-1])
+   if(hx[n]<=hx[n-1]){
+   var left= hx[n-1] - lenghtx
+   lenghtx=lenghtx+10
+   }
+   else{
+   var left= hx[n-1] 
+   lenghtx=lenghtx+10
+   }   
+   console.log("connect")
+   document.body.innerHTML += ('<div id="line'+c+'" style="position: absolute; width: '+lenghtx+'px; height: 10px; background-color: #0066ff; left:'+left+'px; top:'+hy[n]+'px;"></div>')
+}
+
+function connectDotsy(){
+   var lenghty = Math.abs(hy[n]-hy[n-1])
+   if(hy[n]<=hy[n-1]){
+   var top= hy[n-1] - lenghty
+   lenghty=lenghty+10
+   }
+   else{
+   var top=  hy[n-1]
+   lenghty=lenghty+10
+   }
+   document.body.innerHTML += ('<div id="line'+c+'" style="position: absolute; width: 10px; height: '+lenghty+'px; background-color: #0066ff; left:'+hx[n]+'px; top:'+top+'px;"></div')   
+}
+
+function connectDotsx2(){
+   var lenghtx = Math.abs(hx2[n2]-hx2[n2-1])
+   if(hx2[n2]<=hx2[n2-1]){
+   var left= hx2[n2-1] - lenghtx
+      lenghtx=lenghtx+10
+
+   }
+   else{
+   var left= hx2[n2-1] 
+      lenghtx=lenghtx+10
+
+   }   
+   document.body.innerHTML += ('<div id="line'+c+'" style="position: absolute; width: '+lenghtx+'px; height: 10px; background-color: #ff66d9; left:'+left+'px; top:'+hy2[n2]+'px;"></div>')
+}
+
+function connectDotsy2(){
+   var lenghty = Math.abs(hy2[n2]-hy2[n2-1])
+   if(hy2[n2]<=hy2[n2-1]){
+   var top= hy2[n2-1] - lenghty
+      lenghty=lenghty+10
+
+   }
+   else{
+   var top=  hy2[n2-1]
+    lenghty=lenghty+10
+   }
+   document.body.innerHTML += ('<div id="line'+c+'" style="position: absolute; width: 10px; height: '+lenghty+'px; background-color: #ff66d9; left:'+hx2[n2]+'px; top:'+top+'px;"></div')   
+}
+
+
+var start=false;
+window.onkeydown = function (e) {
+    var code = e.keyCode ? e.keyCode : e.which;
+    if (code === 39 && vx === 0 && tri===0) { //right key
+       moveRight()
+        $("div").remove(".bodydiv");
+
+    } else if (code === 37 && vx === 0 && tri===0) { //left key  
+       moveLeft()
+        $("div").remove(".bodydiv");
+
+    } else if (code === 40 && vy === 0 && tri===0) { //down key
+        moveDown()
+        $("div").remove(".bodydiv");
+
+    } else if (code === 38 && vy === 0 && tri===0) { //up key
+        moveUp()
+        $("div").remove(".bodydiv");
+
+    } else if (code === 68 && vx2 === 0 && tri===0) { //d key
+       moveRight2()
+        $("div").remove(".bodydiv2");
+
+    } else if (code === 65 && vx2 === 0 && tri===0) { //a key 
+       moveLeft2()
+        $("div").remove(".bodydiv2");
+
+    } else if (code === 83 && vy2 === 0 && tri===0) { //s key
+        moveDown2()
+        $("div").remove(".bodydiv2");
+
+    } else if (code === 87 && vy2 === 0 && tri===0) { //w key 
+        moveUp2()
+        $("div").remove(".bodydiv2");
+    }
+}
+var f=0
+
+function runAgain(){
+console.log("fadeout")
+   	  $("#closePopup2").hide()
+
+  $("#mov").hide()
+  if(start === false){
+    startAgain()
+  }
+}
+
+function startAgain(){
+ vx = 10
+ vy = 0
+ t = 10
+ x = 220
+ y = 500
+ d=[]
+n=0
+ c =[]
+ hx=[]
+hy=[]
+hx[0]=220
+hy[0]=500
+document.body.innerHTML += ('<div id="part0" style="position: absolute; width: 10px; height: 10px; background-color: #0066ff; left:'+x+'px; top:'+y+'px;"></div>')
+
+ vx2 = -10
+ vy2 = 0
+ t2 = 10
+ x2 = 780
+ y2 = 500
+ d2=[]
+n2=0
+ c2 =[]
+ hx2=[]
+ hy2=[]
+hx2[0]=780
+hy2[0]=500
+
+ tri=0
+
+document.body.innerHTML += ('<div id="part0" style="position: absolute; width: 10px; height: 10px; background-color: #ff66d9; left:'+x2+'px; top:'+y2+'px;"></div>')
+
+
+ $("div").remove(".bodydiv")
+ $("div").remove(".bodydiv2")
+ $("div").remove("#line")
+ $("div").remove("#line2")
+  $("div").remove(".explosion")
+  startInterval()
+}
+
+function dead(){
+  hy2[n2+1]=y2
+  hx2[n2+1]=x2
+  
+  if(10>x || 1000<x || 10>y || 1000<y){
+afterDeath()
+
+  }
+  
+  for (var i = 0; i <= n2; i++) {
+    if((hx2[i] - x)*(hx2[i+1] - x)<=0){
+      if((hy2[i] - y)*(hy2[i+1] - y)<=0){
+afterDeath()
+break
+      }
+    }
+  }
+  for (var i = 0; i < n; i++) {
+    if((hx[i] - x)*(hx[i+1] - x)<=0){
+      if((hy[i] - y)*(hy[i+1] - y)<=0){
+afterDeath()
+break
+      }
+    }
+  }
+}
+
+function dead2(){
+  hy[n+1]=y
+  hx[n+1]=x
+  
+  if(10>x2 || 1000<x2 || 10>y2 || 1000<y2){
+afterDeath2()
+
+  }
+  
+  for (var i = 0; i <= n; i++) {
+    if((hx[i] - x2)*(hx[i+1] - x2)<=0){
+      if((hy[i] - y2)*(hy[i+1] - y2)<=0){
+afterDeath2()
+break
+
+   }
+    }
+  }
+  for (var i = 0; i < n2; i++) {
+    if((hx2[i] - x2)*(hx2[i+1] - x2)<=0){
+      if((hy2[i] - y2)*(hy2[i+1] - y2)<=0){
+afterDeath2()
+break
+
+      }
+    }
+  }
+}
+
+function afterDeath(){
+  pointsPink++   
+  tri=1
+  start = false
+  document.body.innerHTML += ('<div class="explosion" style="position: absolute; width: 10px; height: 10px; background-color: red; left:'+x+'px; top:'+y+'px;"></div>') 
+  $( "#score" ).html('Blue='+pointsBlue+'   Pink='+pointsPink+'')
+  $( "#mov" ).show();
+
+}
+
+function afterDeath2(){
+  pointsBlue++   
+  tri=1
+  start = false
+  document.body.innerHTML += ('<div class="explosion" style="position: absolute; width: 10px; height: 10px; background-color: red; left:'+x2+'px; top:'+y2+'px;"></div>')  
+  $("#mov").show()
+  $( "#score" ).html('Blue='+pointsBlue+'   Pink='+pointsPink+'')
+
+}
+
+var intervalo =[]
+var coco=[]
+function startInterval() {
+              $( ".score" ).html('Blue='+pointsBlue+'   Pink='+pointsPink+'')
+
+intervalo = setInterval(function(){
+if(tri===1){
+  clearInterval(intervalo);
+
+}
+  if(tri===0){  
+
+  x = x + vx
+  y = y + vy
+  
+  x2 = x2 + vx2
+  y2 = y2 + vy2
+  
+  document.body.innerHTML += ('<div class="bodydiv" style="position: absolute; width: 10px; height: 10px; background-color: #0066ff; left:'+x+'px; top:'+y+'px;"></div>')  
+  document.body.innerHTML += ('<div class="bodydiv2" style="position: absolute; width: 10px; height: 10px; background-color: #ff66d9; left:'+x2+'px; top:'+y2+'px;"></div>')
+
+  
+  dead()
+  dead2()}
+}, 30)
+}
+
+
+
+</script>
+
+

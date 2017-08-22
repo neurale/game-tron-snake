@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <style>
+      <?!=HtmlService.createHtmlOutputFromFile('Style').getContent();?>
+
+    </style>
+        <link href="https://fonts.googleapis.com/css?family=Codystar" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Asap|Maven+Pro|Reem+Kufi|Space+Mono" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Antic+Slab|Asap|Bungee|Dekko" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Antic+Slab|Asap|Bungee|Dekko|Press+Start+2P" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  </head>
+  <body>
+ 
+    <iframe width="0" height="0" src="https://www.youtube.com/embed/N4VtxWRfPOk?autoplay=1" frameborder="0" allowfullscreen></iframe>
+
+
+     <div id="outside"></div>
+
+
+    <div id="canvas">  
+    <div id="mov">
+    
+         <div id="closePopup"><button id="closePopup" class="button" onclick="runAgain()"> start</button></div>
+         <div id="closePopup2">Arrow keys to move Blue; w,a,s,d keys to move pink.</div>
+
+ <button id="buttonVoltar" class="button"> <?var url = getScriptUrl();?><a class="nav-link" href='<?=url?>?page=Intro'>Back</a></button>
+     <div id="score">Blue=0 Pink=0</div>
+</div>
+    
+</div>  
+
+
+    
+    <?!= HtmlService.createHtmlOutputFromFile('javascriptnotAI').getContent(); ?>
+  </body>
+</html>
+
+

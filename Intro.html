@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <style>
+      <?!=HtmlService.createHtmlOutputFromFile('Style').getContent();?>
+
+    </style>
+    <link href="https://fonts.googleapis.com/css?family=Codystar" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Asap|Maven+Pro|Reem+Kufi|Space+Mono" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Antic+Slab|Asap|Bungee|Dekko" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Antic+Slab|Asap|Bungee|Dekko|Press+Start+2P" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+  </head>
+  <body>
+  <iframe width="0" height="0" src="https://www.youtube.com/embed/N4VtxWRfPOk?autoplay=1" frameborder="0" allowfullscreen></iframe>
+  <div id="outside"></div>
+    <div id="canvas">
+      <div id="greetings" class="popup">Welcome to the game, enjoy your stay while you can.</div>
+       <div id="choosePlayer"> <button class="button"> <?var url = getScriptUrl();?><a class="nav-link" href='<?=url?>?page=htmlnotAI'> 2 player </a></button>
+         <button  class="button"> <?var url = getScriptUrl();?><a class="nav-link" href='<?=url?>?page=htmlAI'> 1 player </a></button>
+       </div>
+    </div>
+             <?!= HtmlService.createHtmlOutputFromFile('javascriptintro').getContent(); ?>
+       
+  </body>
+</html>
+
+
